@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingEnd="@dimen/make_padding_side"
+        android:paddingRight="@dimen/make_padding_side"
+        android:paddingStart="@dimen/make_padding_side"
+        android:paddingLeft="@dimen/make_padding_side">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_title"
+                android:background="@drawable/custom_edit_background"
+                android:layout_marginTop="@dimen/margin_top_edit"
+                android:paddingStart="@dimen/padding_edit_left"
+                android:paddingLeft="@dimen/padding_edit_left"
+                android:lines="3" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_edit_background"
+                android:hint="@string/hint_addr"
+                android:imeOptions="actionSend"
+                android:layout_marginTop="@dimen/margin_top_edit"
+                android:paddingStart="@dimen/padding_edit_left"
+                android:paddingLeft="@dimen/padding_edit_left"
+                android:lines="3" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_phoneNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_phoneNum"
+                android:background="@drawable/custom_edit_background"
+                android:layout_marginTop="@dimen/margin_top_edit"
+                android:paddingStart="@dimen/padding_edit_left"
+                android:paddingLeft="@dimen/padding_edit_left"
+                android:lines="3" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_comment"
+                android:background="@drawable/custom_edit_background"
+                android:layout_marginTop="@dimen/margin_top_edit"
+                android:paddingStart="@dimen/padding_edit_left"
+                android:paddingLeft="@dimen/padding_edit_left"
+                android:lines="15" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_top_edit">
+
+            <Button
+                android:id="@+id/btn_prev"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>
