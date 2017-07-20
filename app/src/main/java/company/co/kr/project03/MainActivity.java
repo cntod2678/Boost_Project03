@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    @OnClick(R.id.make_attraction_btn)
-    public void makeAttractionClicked(View view){
+    @OnClick(R.id.btn_make)
+    public void onMakeRestaurantClick(View view){
         Intent intent = new Intent(getApplicationContext(), MakeAttractionActivity.class);
         startActivity(intent);
     }

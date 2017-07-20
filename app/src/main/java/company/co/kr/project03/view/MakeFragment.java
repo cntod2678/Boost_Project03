@@ -12,12 +12,12 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.design.widget.TextInputEditText;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -26,13 +26,15 @@ import company.co.kr.project03.model.Restaurant;
 
 public class MakeFragment extends Fragment {
 
+    private static final String TAG = "MakeFragment";
+
     private TextInputEditText editTitle;
     private TextInputEditText editAddress;
     private TextInputEditText editPhoneNum;
     private TextInputEditText editComment;
     private Button btnNext;
 
-    private Restaurant restaurant;
+    private Restaurant restaurant = new Restaurant();
     public MakeFragment() {}
 
     public static MakeFragment newInstance() {
@@ -54,8 +56,6 @@ public class MakeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         initView(view);
         setEvent();
-
-        super.onViewCreated(view, savedInstanceState);
     }
 
     private void initView(View view) {
@@ -67,19 +67,6 @@ public class MakeFragment extends Fragment {
     }
 
     private void setEvent() {
-        editAddress.setOnLongClickListener(new View.OnLongClickListener(){
-            @Override
-            public boolean onLongClick(View view) {
-                /*
-                *   todo 사용자 위치를 받을건지 체크하고 아니라면 초기값을 넘겨주자
-                *   saveState.
-                * */
-
-                return false;
-            }
-        });
-
-
         /*
         *  주소를 입력하면 해당 주소가 나오고,
         *  주소를 입력하지 않으면 default 인 판교역이 나온다
@@ -87,9 +74,8 @@ public class MakeFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                restaurant = new Restaurant();
-                readData(restaurant);
-                showMapFragment(restaurant);
+                readData();
+                showMapFragment();
             }
         });
     }
@@ -97,7 +83,7 @@ public class MakeFragment extends Fragment {
     /*
     * Read each Data from TextInputEditText
     * */
-    private void readData(Restaurant restaurant) {
+    private void readData() {
         double latitude = 37.395037;
         double longitude = 127.111146;
 
@@ -120,24 +106,26 @@ public class MakeFragment extends Fragment {
 
         restaurant.setLatitude(latitude);
         restaurant.setLongitude(longitude);
+
+        Log.d(TAG, restaurant.toString());
     }
 
     /*
     *  Show MapFragment with Restaurant data
     * */
-    private void showMapFragment(Restaurant res) {
+    private void showMapFragment() {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.content_make, MyMapFragment.newInstance(res), "MAP")
-                .addToBackStack("MAKE").commit();
+        fragmentTransaction.add(R.id.content_make, MyMapFragment.newInstance(restaurant), "MAP")
+                .addToBackStack(null).commit();
     }
 
-    public static Location findGeoPoint(Context mContext, String address) {
+    private Location findGeoPoint(Context mContext, String address) {
         Location location = new Location("");
         Geocoder geoCoder = new Geocoder(mContext);
         List<Address> addressList = null;
 
         try {
-            addressList = geoCoder.getFromLocationName(address, 10);
+            addressList = geoCoder.getFromLocationName(address, 1);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -154,5 +142,4 @@ public class MakeFragment extends Fragment {
     }
 
     //todo onBack 메소드 override
-
 }

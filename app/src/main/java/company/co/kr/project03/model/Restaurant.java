@@ -2,11 +2,15 @@ package company.co.kr.project03.model;
 
 import java.io.Serializable;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by Dongjin on 2017. 7. 19..
  */
 
-public class Restaurant implements Serializable{
+public class Restaurant extends RealmObject implements Serializable{
+    @PrimaryKey
     String title;
     String address;
     String phoneNum;
@@ -17,14 +21,14 @@ public class Restaurant implements Serializable{
 
     public Restaurant(){}
 
-    public Restaurant(String title, String address, String phoneNum, String comment, double latitude, double longitude) {
-        this.title = title;
-        this.address = address;
-        this.phoneNum = phoneNum;
-        this.comment = comment;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
+    /* SingleTon */
+//
+//    private static Restaurant restaurant = new Restaurant();
+//    private Restaurant(){}
+//
+//    public static Restaurant getRestaurant() {
+//        return restaurant;
+//    }
 
     public String getTitle() {
         return title;

@@ -7,16 +7,16 @@
     android:layout_height="match_parent"
     tools:context="company.co.kr.project03.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/make_attraction_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="makeAttractionClicked" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_make"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        android:text="맛집추가"
+        android:onClick="onMakeRestaurantClick" />
 
 </android.support.constraint.ConstraintLayout>

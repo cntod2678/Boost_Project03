@@ -7,5 +7,5 @@
     <string name="hint_title">식당명을 입력하세요</string>
     <string name="hint_addr">주소를 입력하세요</string>
     <string name="hint_phoneNum">전화번호 입력하세요</string>
-    <string name="hint_comment">코멘트를 남겨주세</string>
+    <string name="hint_comment">코멘트를 남겨주세요</string>
 </resources>

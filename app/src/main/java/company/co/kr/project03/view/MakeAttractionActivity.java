@@ -13,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.location.places.Places;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import butterknife.BindView;
@@ -33,14 +32,6 @@ public class MakeAttractionActivity extends AppCompatActivity implements GoogleA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_attraction);
 
-        googleApiClient = new GoogleApiClient
-                .Builder(this)
-                .addApi(Places.GEO_DATA_API)
-                .addApi(Places.PLACE_DETECTION_API)
-                .enableAutoManage(this, this)
-                .build();
-
-
         initView();
     }
 
@@ -56,9 +47,10 @@ public class MakeAttractionActivity extends AppCompatActivity implements GoogleA
     }
 
     private void setToolbar() {
+        toolbar.setTitle(R.string.MakeTitle);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle(R.string.MakeTitle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override
